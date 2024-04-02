@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const { connect } = require('./Src/Config/DBConnection');
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/v1', userRoutes);
 app.use('/api/v2', teamRoutes);
 
-const port = 8081;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
